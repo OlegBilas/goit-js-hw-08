@@ -25,7 +25,8 @@ function onInputFormElements(event) {
 
 function onSubmitForm(event) {
   event.preventDefault();
-  event.target.reset();
-  console.log(JSON.parse(localStorage.getItem(FEEDBACK_FORM_STATE)));
+  console.log(formData);
+  event.currentTarget.reset();
+  formData = {};
   localStorage.removeItem(FEEDBACK_FORM_STATE);
 }

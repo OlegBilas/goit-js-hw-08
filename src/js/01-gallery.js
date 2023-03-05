@@ -7,7 +7,7 @@ import { galleryItems } from './gallery-items';
 const galleryRef = document.querySelector('.gallery');
 galleryRef.innerHTML = createGalleryItems(galleryItems);
 
-const lightbox = new SimpleLightbox('.gallery a', {
+new SimpleLightbox('.gallery a', {
   captionsData: 'alt',
   captionDelay: 250,
 });

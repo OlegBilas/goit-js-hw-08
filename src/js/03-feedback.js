@@ -2,14 +2,14 @@ import throttle from 'lodash.throttle';
 
 const formRef = document.querySelector('.feedback-form');
 const FEEDBACK_FORM_STATE = 'feedback-form-state';
-const formData = {};
+let formData;
 
 //Відновлення значень із локального сховища
 const dataInputs = localStorage.getItem(FEEDBACK_FORM_STATE);
 if (dataInputs) {
-  const deserializatedValues = JSON.parse(dataInputs);
-  for (const key of Object.keys(deserializatedValues)) {
-    formRef.elements[key].value = deserializatedValues[key];
+  formData = JSON.parse(dataInputs);
+  for (const key of Object.keys(formData)) {
+    formRef.elements[key].value = formData[key];
   }
 }
 
@@ -26,5 +26,6 @@ function onInputFormElements(event) {
 function onSubmitForm(event) {
   event.preventDefault();
   event.target.reset();
+  console.log(JSON.parse(localStorage.getItem(FEEDBACK_FORM_STATE)));
   localStorage.removeItem(FEEDBACK_FORM_STATE);
 }
